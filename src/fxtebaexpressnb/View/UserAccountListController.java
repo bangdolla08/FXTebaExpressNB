@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import fxtebaexpressnb.Utility.BaseController;
 import fxtebaexpressnb.Utility.FileFXML;
+import fxtebaexpressnb.Utility.ViewMode;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class UserAccountListController extends BaseController{
         fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.USER_ACCOUNT_LIST_VIEW);
         UserAccountListController controller=fXMLLoader.<UserAccountListController>getController();
         controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
-        controller.pageFistLoad();
+        controller.PageFistLoad();
     }
     @FXML // fx:id="btnAddUser"
     private JFXButton btnAddUser; // Value injected by FXMLLoader
@@ -68,7 +69,7 @@ public class UserAccountListController extends BaseController{
     private JFXButton btnLast; // Value injected by FXMLLoader
 
     @Override
-    public void pageFistLoad() {
+    public void PageFistLoad() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -86,4 +87,18 @@ public class UserAccountListController extends BaseController{
 
     }
 
+    @Override
+    public void PageFistLoad(Object object, ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void PageFistLoad(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ChangeViewMode(ViewMode mode) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

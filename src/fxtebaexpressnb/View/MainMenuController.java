@@ -3,6 +3,7 @@ package fxtebaexpressnb.View;
 import fxtebaexpressnb.Utility.FileFXML;
 import com.jfoenix.controls.JFXButton;
 import fxtebaexpressnb.Utility.BaseController;
+import fxtebaexpressnb.Utility.ViewMode;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +16,22 @@ import javafx.scene.layout.BorderPane;
 
 public class MainMenuController extends BaseController{
 
+    @Override
+    public void PageFistLoad(Object object, ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void PageFistLoad(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ChangeViewMode(ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     private enum selectedMenu{
         Dashboard,
         Pengirim
@@ -71,7 +88,7 @@ public class MainMenuController extends BaseController{
     }
 
     @Override
-    public void pageFistLoad() {
+    public void PageFistLoad() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

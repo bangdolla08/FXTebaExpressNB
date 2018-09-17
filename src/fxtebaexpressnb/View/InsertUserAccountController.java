@@ -13,6 +13,7 @@ import com.jfoenix.controls.JFXTextField;
 import fxtebaexpressnb.Utility.BaseController;
 import fxtebaexpressnb.Utility.BaseControllerModel;
 import fxtebaexpressnb.Utility.FileFXML;
+import fxtebaexpressnb.Utility.ViewMode;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,14 +38,22 @@ public class InsertUserAccountController extends BaseController{
     
     public static void loadInsertTransactionController(BaseController baseControllerFromParent){
         FXMLLoader fXMLLoader=null;
-//        InsertUserAccountController insertUserAccount=new InsertUserAccountController(baseControllerFromParent.getBaseControllerModel());
-//        fXMLLoader=new FXMLLoader(baseControllerFromParent.getFileUrl(FileFXML.USER_ACCOUNT_CREATE_EDIT_VIEW));
-//        fXMLLoader.setController(insertUserAccount);
-        
         fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.USER_ACCOUNT_CREATE_EDIT_VIEW);
         InsertUserAccountController controller=fXMLLoader.<InsertUserAccountController>getController();
         controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
-        controller.pageFistLoad();
+        controller.PageFistLoad();
+    }
+    /**
+     * Load View User Account Countroller dengan merubah nya menjadi view Mode dengan mengirim data primary key nya yang di pilih baik dari list ataupun dari tempatlain
+     * @param baseController
+     * @param primaryKey 
+     */
+    public static void loadInsertTransactionController(BaseController baseControllerFromParent,Object primaryKey){
+        FXMLLoader fXMLLoader=null;
+        fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.USER_ACCOUNT_CREATE_EDIT_VIEW);
+        InsertUserAccountController controller=fXMLLoader.<InsertUserAccountController>getController();
+        controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
+        controller.PageFistLoad(primaryKey);
     }
     
     @FXML
@@ -109,7 +118,7 @@ public class InsertUserAccountController extends BaseController{
     }
 
     @Override
-    public void pageFistLoad() {
+    public void PageFistLoad() {
         labelInsetAwb.setText(getLoginData());
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -124,6 +133,22 @@ public class InsertUserAccountController extends BaseController{
 
     @FXML
     private void btnResetAction(ActionEvent event) {
+    }
+
+    @Override
+    public void PageFistLoad(Object object, ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void PageFistLoad(Object object) {
+        // TODO buat untuk load data dari data primary key dan membuatnya tampil 
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ChangeViewMode(ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

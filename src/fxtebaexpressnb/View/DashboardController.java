@@ -4,6 +4,7 @@ import fxtebaexpressnb.Utility.FileFXML;
 import fxtebaexpressnb.Utility.LoadPage;
 import com.jfoenix.controls.JFXButton;
 import fxtebaexpressnb.Utility.BaseController;
+import fxtebaexpressnb.Utility.ViewMode;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class DashboardController extends BaseController{
         fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.DASHBOARDFILE);
         DashboardController controller=fXMLLoader.<DashboardController>getController();
         controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
-        controller.pageFistLoad();
+        controller.PageFistLoad();
     }
     /**
      * Untuk Load Baru Sekali
@@ -35,7 +36,7 @@ public class DashboardController extends BaseController{
         fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.DASHBOARDFILE,borderPane);
         DashboardController controller=fXMLLoader.<DashboardController>getController();
         controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
-        controller.pageFistLoad();
+        controller.PageFistLoad();
     }
     
 //    
@@ -67,8 +68,24 @@ public class DashboardController extends BaseController{
     }
 
     @Override
-    public void pageFistLoad() {
+    public void PageFistLoad() {
         txtCobaDataS.requestFocus();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    @Override
+    public void PageFistLoad(Object object, ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void PageFistLoad(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ChangeViewMode(ViewMode mode) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
