@@ -19,7 +19,17 @@ import javafx.scene.layout.BorderPane;
 public abstract class BaseController{
     
     private BaseControllerModel baseControllerModel;
-    public abstract void pageFistLoad();
+    
+    public abstract void PageFistLoad();
+    
+    public abstract void PageFistLoad(Object object,ViewMode mode);
+    /**
+     * untuk Load Data yang sudah ada dan otomatis menjadi View Mode
+     * @param object 
+     */
+    public abstract void PageFistLoad(Object object);
+    
+    public abstract void ChangeViewMode(ViewMode mode);
     
     public BaseControllerModel getBaseControllerModel() {
         if(this.baseControllerModel==null){
