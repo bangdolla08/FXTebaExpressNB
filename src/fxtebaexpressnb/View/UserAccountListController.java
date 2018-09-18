@@ -19,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
 public class UserAccountListController extends BaseController{
+    
     public static void LoadUserAccountList(BaseController baseControllerFromParent){
         FXMLLoader fXMLLoader=null;
         fXMLLoader=baseControllerFromParent.changeCenter(FileFXML.USER_ACCOUNT_LIST_VIEW);
@@ -26,12 +27,20 @@ public class UserAccountListController extends BaseController{
         controller.setBaseControllerModel(baseControllerFromParent.getBaseControllerModel());
         controller.PageFistLoad();
     }
+    
+    
+     @FXML // fx:id="basePane"
+    private AnchorPane basePane; // Value injected by FXMLLoader
+
     @FXML // fx:id="btnAddUser"
     private JFXButton btnAddUser; // Value injected by FXMLLoader
 
     @FXML // fx:id="treeTableView"
     private JFXTreeTableView<?> treeTableView; // Value injected by FXMLLoader
 
+    @FXML // fx:id="idColoumn"
+    private JFXTreeTableColumn<?, ?> idColoumn; // Value injected by FXMLLoader
+    
     @FXML // fx:id="firstNameColumn"
     private JFXTreeTableColumn<?, ?> firstNameColumn; // Value injected by FXMLLoader
 
@@ -70,17 +79,19 @@ public class UserAccountListController extends BaseController{
 
     @Override
     public void PageFistLoad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //TODO make load user account
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public AnchorPane getCenterPane() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return basePane;
     }
 
     @Override
     public URL getFileUrl(FileFXML fXML) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return getClass().getResource(fXML.toString());
     }
     @FXML
     void addUserOnAction(ActionEvent event) {
@@ -89,16 +100,22 @@ public class UserAccountListController extends BaseController{
 
     @Override
     public void PageFistLoad(Object object, ViewMode mode) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Untuk Load Dengan ID User Yang Sudah Ada
+     * @param object 
+     */
     @Override
     public void PageFistLoad(Object object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void ChangeViewMode(ViewMode mode) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

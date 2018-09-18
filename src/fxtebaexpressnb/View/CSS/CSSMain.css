@@ -142,5 +142,13 @@
     -fx-font-size: 18.0px;
 }
 
+.SearchLabel{
+    -fx-font-weight: BOLD;
+    -fx-font-size: 24.0px;
+    -fx-text-fill: #68707c;
+    -jfx-focus-color: #66afe9;
+    -jfx-unfocus-color: #cccccc;
+}
+
 
 

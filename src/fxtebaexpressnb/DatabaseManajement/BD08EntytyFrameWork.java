@@ -10,6 +10,8 @@ import java.util.List;
 import java.sql.*;
 import java.util.AbstractList;
 import java.util.Iterator;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -176,6 +178,29 @@ public abstract class BD08EntytyFrameWork<E>{
      */
     public boolean isChange(){
         return _isChange;
+    }
+    
+    public int Count(){
+        return this.getListDataFromDB().size();
+    }
+    
+    /**
+     * Untuk Membuat ObservableList yang di gunakan di java fx 
+     * @param page halam keberapa
+     * @param bucketSize t ampilan yang akan di tampilkan 
+     * @return hasil tinggal di tancepin ke fx aja
+     */
+    public ObservableList<E> generateDummyData(int page,int bucketSize) {
+        int skipdata=(page-1)*bucketSize;
+        final ObservableList<E> dummyData = FXCollections.observableArrayList();
+        getListDataFromDB().stream().skip(skipdata).limit(bucketSize).forEach(listData -> dummyData.add(listData));
+        return dummyData;
+    }
+    
+    public int AvailablePage(int bucketSize){
+        int res=Count()/bucketSize;
+        res++; 
+        return res;
     }
     
     protected class ColoumnValue{

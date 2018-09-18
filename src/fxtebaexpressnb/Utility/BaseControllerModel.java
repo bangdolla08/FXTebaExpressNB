@@ -5,6 +5,7 @@
  */
 package fxtebaexpressnb.Utility;
 
+import fxtebaexpressnb.DatabaseManajement.DBContext;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -14,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 public class BaseControllerModel {
     private String dataCoba;
     private BorderPane borderPane;
+    private DBContext bContext;
 //    private 
     
     public String getDataCoba() {
@@ -31,6 +33,14 @@ public class BaseControllerModel {
     public void setBorderPane(BorderPane borderPane) {
         this.borderPane = borderPane;
     }
+
+    public DBContext getbContext() {
+        if(bContext==null){
+            bContext=new DBContext();
+        }
+        return bContext;
+    }
+    
     
     
 }
