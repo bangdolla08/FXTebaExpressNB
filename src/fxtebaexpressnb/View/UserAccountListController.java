@@ -8,13 +8,22 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import fxtebaexpressnb.DatabaseManajement.TableEntity.TableUserManager;
 import fxtebaexpressnb.Utility.BaseController;
 import fxtebaexpressnb.Utility.FileFXML;
+import fxtebaexpressnb.Utility.StaticValue;
 import fxtebaexpressnb.Utility.ViewMode;
 import java.net.URL;
+import java.util.function.Function;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -30,34 +39,33 @@ public class UserAccountListController extends BaseController{
     
     
      @FXML // fx:id="basePane"
-    private AnchorPane basePane; // Value injected by FXMLLoader
+    private AnchorPane bodyPane; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnAddUser"
     private JFXButton btnAddUser; // Value injected by FXMLLoader
 
     @FXML // fx:id="treeTableView"
-    private JFXTreeTableView<?> treeTableView; // Value injected by FXMLLoader
+    private JFXTreeTableView<TableUserManager> treeTableView; // Value injected by FXMLLoader
 
     @FXML // fx:id="idColoumn"
-    private JFXTreeTableColumn<?, ?> idColoumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, Integer> idColoumn; // Value injected by FXMLLoader
     
     @FXML // fx:id="firstNameColumn"
-    private JFXTreeTableColumn<?, ?> firstNameColumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, String> firstNameColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="lastNameColumn"
-    private JFXTreeTableColumn<?, ?> lastNameColumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, String> lastNameColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="emailColumn"
-    private JFXTreeTableColumn<?, ?> emailColumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, String> emailColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="usernameColumn"
-    private JFXTreeTableColumn<?, ?> usernameColumn; // Value injected by FXMLLoader
-
+    private JFXTreeTableColumn<TableUserManager, String> usernameColumn; // Value injected by FXMLLoader
     @FXML // fx:id="statusColumn"
-    private JFXTreeTableColumn<?, ?> statusColumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, String> statusColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="actionColumn"
-    private JFXTreeTableColumn<?, ?> actionColumn; // Value injected by FXMLLoader
+    private JFXTreeTableColumn<TableUserManager, Integer> actionColumn; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnFirst"
     private JFXButton btnFirst; // Value injected by FXMLLoader
@@ -76,17 +84,37 @@ public class UserAccountListController extends BaseController{
 
     @FXML // fx:id="btnLast"
     private JFXButton btnLast; // Value injected by FXMLLoader
+    @FXML
+    private AnchorPane centerPaneAchore;
+    @FXML
+    private JFXTextField txtSearch;
+    @FXML
+    private JFXButton btnSeach;
 
     @Override
     public void PageFistLoad() {
         //TODO make load user account
-        
+        this.idColoumn.setVisible(false);
+        setupCellValueFactory(idColoumn, (t) -> t.getIpId().asObject()); //To change body of generated lambdas, choose Tools | Templates.
+        setupCellValueFactory(firstNameColumn, TableUserManager::getSpFirstName); //To change body of generated lambdas, choose Tools | Templates.
+        setupCellValueFactory(lastNameColumn, TableUserManager::getSpLastName); //To change body of generated lambdas, choose Tools | Templates.
+        setupCellValueFactory(emailColumn, TableUserManager::getSpEmail); //To change body of generated lambdas, choose Tools | Templates.
+        setupCellValueFactory(usernameColumn, TableUserManager::getSpUsername); //To change body of generated lambdas, choose Tools | Templates.
+        setupCellValueFactory(statusColumn, TableUserManager::getSpNamaCabang); //To change body of generated lambdas, choose Tools | Templates.
+        this.Page=0;
+        this.bucketSize=StaticValue.bucketSize;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void ChangePage(){
+        ObservableList<TableUserManager> dummyData=getDBContext().getUserManagers().generateDummyData(this.Page, this.bucketSize);
+        treeTableView.setRoot(new RecursiveTreeItem<>(dummyData, RecursiveTreeObject::getChildren));
+        txtPage.setText(String.valueOf(this.Page));
     }
 
     @Override
     public AnchorPane getCenterPane() {
-        return basePane;
+        return bodyPane;
     }
 
     @Override
@@ -116,6 +144,26 @@ public class UserAccountListController extends BaseController{
     @Override
     public void ChangeViewMode(ViewMode mode) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    private <T> void setupCellValueFactory(JFXTreeTableColumn<TableUserManager, T> column, Function<TableUserManager, ObservableValue<T>> mapper) {
+        column.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableUserManager, T> param) -> {
+            if (column.validateValue(param)) {
+                return mapper.apply(param.getValue().getValue());
+            } else {
+                return column.getComputedValue(param);
+            }
+        });
+    }
+    @FXML
+    void searchItemAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void searchOnChange(InputMethodEvent event) {
+
     }
     
 }

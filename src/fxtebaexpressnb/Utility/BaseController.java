@@ -5,6 +5,7 @@
  */
 package fxtebaexpressnb.Utility;
 
+import fxtebaexpressnb.DatabaseManajement.DBContext;
 import fxtebaexpressnb.View.DashboardController;
 import java.io.IOException;
 import java.net.URL;
@@ -100,7 +101,7 @@ public abstract class BaseController{
             fXMLLoader=new FXMLLoader(getFileUrl(fileFXML));
             AnchorPane anchorPane= fXMLLoader.load();
             //getCenterPane().getChildren().setAll(anchorPane);
-            getBorderPane().setCenter(anchorPane);
+            getBorderPane().setCenter(fXMLLoader.load());
         }catch (IOException ioEx){
             System.out.print("File Data Tidak ada "+ioEx.getMessage());
         }catch (Exception ioEx){
@@ -123,5 +124,12 @@ public abstract class BaseController{
         }
         return fXMLLoader;
     }
+    
+    protected DBContext getDBContext(){
+        return this.baseControllerModel.getbContext();
+    }
+    
+    protected int Page=0;
+    protected int bucketSize=10;
     
 }

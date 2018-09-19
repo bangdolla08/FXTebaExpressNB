@@ -1,10 +1,17 @@
 package fxtebaexpressnb.DatabaseManajement.TableEntity;
 
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import java.util.ArrayList;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.StringProperty;
 
-public class TableUserManager{
-
+public class TableUserManager extends RecursiveTreeObject<TableUserManager>{
+    
+    
+    
     private int Id;
     private String FirstName;
     private String LastName;
@@ -14,6 +21,7 @@ public class TableUserManager{
     private String Alamat;
     private String PhoneNumber;
     private int CabangId;
+    private TableCabangManager cabangManager;
     
     
     public int getId() {
@@ -87,4 +95,56 @@ public class TableUserManager{
     public String getPassword() {
         return Password;
     }
+
+    public TableCabangManager getCabangManager() {
+        return cabangManager;
+    }
+
+    public void setCabangManager(TableCabangManager cabangManager) {
+        this.cabangManager = cabangManager;
+    }
+    
+    //<editor-fold defaultstate="collapsed" desc="Untuk Membuat Table List View">
+    public SimpleIntegerProperty getIpId() {
+        return new SimpleIntegerProperty(Id);
+    }
+
+    public SimpleStringProperty getSpLastName() {
+        return new SimpleStringProperty(LastName);
+    }
+
+    public SimpleStringProperty getSpFirstName() {
+        return new SimpleStringProperty(FirstName);
+    }
+
+    public SimpleStringProperty getSpEmail() {
+        return new SimpleStringProperty(Email);
+    }
+
+    public SimpleStringProperty getSpUsername() {
+        return new SimpleStringProperty(Username);
+    }
+
+    public SimpleStringProperty getSpPassword() {
+        return new SimpleStringProperty(Password);
+    }
+
+    public SimpleStringProperty getSpAlamat() {
+        return new SimpleStringProperty(Alamat);
+    }
+
+    public SimpleStringProperty getSpPhoneNumber() {
+        return new SimpleStringProperty(PhoneNumber);
+    }
+
+    public SimpleIntegerProperty getIpCabangId() {
+        return new SimpleIntegerProperty(CabangId);
+    }
+    public SimpleStringProperty getSpNamaCabang(){
+        return new SimpleStringProperty(getCabangManager().getNamaCabang());
+    }
+    //</editor-fold>
+
+   
+    //TODO Cabang Belom ada kelasnya
 }

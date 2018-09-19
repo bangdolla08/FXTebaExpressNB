@@ -192,7 +192,7 @@ public abstract class BD08EntytyFrameWork<E>{
      */
     public ObservableList<E> generateDummyData(int page,int bucketSize) {
         int skipdata=(page-1)*bucketSize;
-        final ObservableList<E> dummyData = FXCollections.observableArrayList();
+        ObservableList<E> dummyData = FXCollections.observableArrayList();
         getListDataFromDB().stream().skip(skipdata).limit(bucketSize).forEach(listData -> dummyData.add(listData));
         return dummyData;
     }

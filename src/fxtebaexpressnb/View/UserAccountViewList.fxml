@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="bodyPane" prefHeight="749.0" prefWidth="965.0" styleClass="parent" stylesheets="@CSS/CSSMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxtebaexpressnb.View.UserAccountListController">
+<AnchorPane id="AnchorPane" fx:id="bodyPane" prefHeight="749.0" prefWidth="965.0" styleClass="parent" stylesheets="@CSS/CSSMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxtebaexpressnb.View.UserAccountViewListController">
    <children>
       <BorderPane layoutX="329.0" layoutY="66.0" prefHeight="750.0" prefWidth="1074.0" styleClass="parent" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -103,8 +103,8 @@
                            </padding>
                         </HBox>
                         <ScrollPane prefHeight="407.0" prefWidth="965.0" styleClass="parent" VBox.vgrow="ALWAYS">
-                          <content>
-                            <AnchorPane prefHeight="591.0" prefWidth="1471.0">
+                           <content>
+                              <AnchorPane prefHeight="591.0" prefWidth="1471.0">
                                  <children>
                                     <JFXTreeTableView fx:id="treeTableView" layoutX="20.0" prefHeight="400.0" prefWidth="1431.0" styleClass="TableAnchorePane" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                        <columns>
@@ -122,7 +122,7 @@
                                     <Insets left="10.0" right="10.0" />
                                  </padding>
                               </AnchorPane>
-                          </content>
+                           </content>
                         </ScrollPane>
                      </children>
                   </VBox>

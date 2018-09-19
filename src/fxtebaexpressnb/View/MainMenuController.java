@@ -67,7 +67,8 @@ public class MainMenuController extends BaseController{
     @FXML
     void btnPengirimanAction(ActionEvent event) {
         loadData(selectedMenu.Pengirim);
-        InsertUserAccountController.loadInsertTransactionController(this);
+        //InsertUserAccountController.loadInsertTransactionController(this);
+        UserAccountListController.LoadUserAccountList(this);
     }
     @FXML
     void initialize() {
