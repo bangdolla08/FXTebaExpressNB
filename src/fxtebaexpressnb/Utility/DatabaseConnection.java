@@ -24,16 +24,16 @@ public class DatabaseConnection {
     private String passwordDB;
     
     public DatabaseConnection(){
-        databaseLocation="localhost:3306";
-        dbName="tebaExp";
-        usernameDB="root";
-        passwordDB="";
+        databaseLocation="139.99.6.110";
+        dbName="tebaexpr_exps";
+        usernameDB="tebaexpr";
+        passwordDB="Teba778899!@#";
     }
     
     public Connection getConnection() throws Exception{
         if(connection==null){
             try {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
             } catch (ClassNotFoundException e) {
                 System.err.println("Where is your MySQL JDBC Driver?");
                 e.printStackTrace();

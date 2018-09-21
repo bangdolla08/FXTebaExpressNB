@@ -103,13 +103,16 @@ public class UserAccountListController extends BaseController{
         setupCellValueFactory(statusColumn, TableUserManager::getSpNamaCabang); //To change body of generated lambdas, choose Tools | Templates.
         this.Page=0;
         this.bucketSize=StaticValue.bucketSize;
+        this.ChangePage();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void ChangePage(){
         ObservableList<TableUserManager> dummyData=getDBContext().getUserManagers().generateDummyData(this.Page, this.bucketSize);
         treeTableView.setRoot(new RecursiveTreeItem<>(dummyData, RecursiveTreeObject::getChildren));
+        treeTableView.setShowRoot(false);
         txtPage.setText(String.valueOf(this.Page));
+        
     }
 
     @Override

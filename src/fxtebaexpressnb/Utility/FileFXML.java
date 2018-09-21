@@ -16,7 +16,7 @@ public enum FileFXML {
     USER_ACCOUNT_LIST_VIEW{
         @Override
         public String toString() {
-            return "UserAccountListController.fxml"; //To change body of generated methods, choose Tools | Templates.
+            return "UserAccountList.fxml"; //To change body of generated methods, choose Tools | Templates.
         }
         
     }

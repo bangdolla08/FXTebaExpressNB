@@ -22,12 +22,12 @@ public class ConnectionSetting {
         String ConnectionDB;
         Connection connection = null;
         try{            
-            Class.forName("com.mysql.jdbc.Driver");
-            ConnectionDatabaseLocation = "localhost:3306";
-            ConnectionUser = "root";
-            ConnectionDB="tebaexp_built";
-            ConnectionPassword = "";
-            connection=DriverManager.getConnection("jdbc:mysql://"+ConnectionDatabaseLocation+"/"+ConnectionDB,ConnectionUser,ConnectionPassword);
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            ConnectionDatabaseLocation = "139.99.6.110:3306";
+            ConnectionUser = "tebaexpr";
+            ConnectionDB="tebaexpr_exps";
+            ConnectionPassword = "Teba778899!@#";
+            connection=DriverManager.getConnection("jdbc:mysql://"+ConnectionDatabaseLocation+"/"+ConnectionDB+"?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",ConnectionUser,ConnectionPassword);
             //DefaultLogin
         }catch(Exception e){
             System.out.print(e);

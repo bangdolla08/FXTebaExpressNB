@@ -101,7 +101,7 @@ public abstract class BaseController{
             fXMLLoader=new FXMLLoader(getFileUrl(fileFXML));
             AnchorPane anchorPane= fXMLLoader.load();
             //getCenterPane().getChildren().setAll(anchorPane);
-            getBorderPane().setCenter(fXMLLoader.load());
+            getBorderPane().setCenter(anchorPane);
         }catch (IOException ioEx){
             System.out.print("File Data Tidak ada "+ioEx.getMessage());
         }catch (Exception ioEx){

@@ -4,14 +4,9 @@ package fxtebaexpressnb.DatabaseManajement.TableEntity;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import java.util.ArrayList;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
 
 public class TableUserManager extends RecursiveTreeObject<TableUserManager>{
-    
-    
-    
+  
     private int Id;
     private String FirstName;
     private String LastName;
@@ -141,7 +136,7 @@ public class TableUserManager extends RecursiveTreeObject<TableUserManager>{
         return new SimpleIntegerProperty(CabangId);
     }
     public SimpleStringProperty getSpNamaCabang(){
-        return new SimpleStringProperty(getCabangManager().getNamaCabang());
+        return new SimpleStringProperty("Coa");
     }
     //</editor-fold>
 
